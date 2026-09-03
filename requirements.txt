@@ -1,0 +1,6 @@
+numpy>=1.21
+# Optional. SciPy is used only for the sparse LU factorisation; without it the
+# package falls back to its own pure-NumPy sparse Cholesky (slower, same answer).
+scipy>=1.7
+# Optional. Needed only by posegraph.plotting and the benchmark figures.
+matplotlib>=3.4
