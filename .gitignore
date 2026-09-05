@@ -21,7 +21,7 @@ data/*.dat
 data/*.part
 
 # Generated figures. The small set used by the README is copied into
-# docs/images/ and committed from there.
+# docs/images/ and docs/screenshots/ and committed from there.
 benchmarks/output/*
 !benchmarks/output/.gitkeep
 !benchmarks/output/README.md

@@ -24,15 +24,19 @@ script under `tools/`; nothing in `src/` imports it.)
 We build robot autonomy software, and this is the piece of it we most often get
 asked to explain, so it is the piece we wrote out in full.
 
-![sphere2500 before and after](docs/images/sphere2500_before_after.png)
+## Screenshots
 
-`sphere2500`, one of the standard SE(3) benchmarks: 2500 poses and 4949
-constraints. On the left, the trajectory implied by chaining the raw
-measurements. On the right, the same measurements after this optimiser has
-reconciled them, against the published ground truth in grey. Absolute
-Trajectory Error goes from 27.93 m to 0.180 m in 10 iterations and 2.8 s.
-Both figures are produced by `benchmarks/run_benchmarks.py`; nothing here is
-hand-drawn.
+Every figure below is written by `benchmarks/run_benchmarks.py` on the published
+`.g2o` benchmark files. Nothing here is hand-drawn.
+
+![sphere2500 trajectory before and after optimisation, against ground truth](docs/screenshots/sphere2500-before-after.png)
+`sphere2500`, a standard SE(3) benchmark of 2500 poses and 4949 constraints: raw chained measurements on the left, the optimised graph on the right against the published ground truth in grey. ATE 27.93 m to 0.180 m in 10 iterations.
+
+![The same pose graph solved with no robust kernel, with Huber, and with DCS](docs/screenshots/robust-kernel-comparison.png)
+The `manhattan` benchmark with 20 false loop closures injected, solved three times with the same code and three different cost functions. Without a robust kernel the map folds in half.
+
+![Cholesky factor sparsity in natural order versus fill-reducing order](docs/screenshots/cholesky-fill-in.png)
+Why ordering is the whole game: the Cholesky factor of the `sphere2500` information matrix has 124,998 nonzero blocks in natural order and 44,476 after the fill-reducing ordering computed here.
 
 ## The problem
 
